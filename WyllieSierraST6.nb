@@ -1,0 +1,225 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8582,        217]
+NotebookOptionsPosition[      7677,        189]
+NotebookOutlinePosition[      8203,        212]
+CellTagsIndexPosition[      8139,        207]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["ST-6 Wyllie", "Title",
+ CellChangeTimes->{{3.762682088668158*^9, 3.762682089010344*^9}, {
+  3.762703007687813*^9, 
+  3.762703015687091*^9}},ExpressionUUID->"29d8829d-0830-4fd5-a6ac-\
+62f48871be80"],
+
+Cell[BoxData[
+ RowBox[{"curveBoi", ":=", " ", 
+  RowBox[{"DynamicModule", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Show", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Graphics", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"Point", "[", "pts", "]"}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"PlotRange", "\[Rule]", " ", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "10"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "10"}], ",", "10"}], "}"}]}], "}"}]}], ",", " ", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Axes", "\[Rule]", "True"}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{
+          "call", " ", "to", " ", "make", " ", "curve", " ", "thingy"}], ",", 
+          " ", 
+          RowBox[{
+          "also", " ", "calls", " ", "built", " ", "in", " ", "function"}]}], 
+         "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"makeFunction", "[", "pts", "]"}]}], "\[IndentingNewLine]", 
+       "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"pts", ",", 
+          RowBox[{"{", "}"}]}], "}"}], ",", "Locator", ",", 
+        RowBox[{"LocatorAutoCreate", "\[Rule]", "True"}]}], "}"}]}], 
+     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellLabel->"In[33]:=",ExpressionUUID->"8a58df14-c7e2-4599-9a30-0b80c8767b28"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"makeFunction", "[", "pts_", "]"}], " ", ":=", " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"curve", ",", " ", "values", ",", "x"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"values", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         SuperscriptBox["x", "n"], ",", 
+         RowBox[{"{", 
+          RowBox[{"n", ",", "0", ",", 
+           RowBox[{
+            RowBox[{"Length", "@", "pts"}], "-", "1"}]}], "}"}]}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "@", "pts"}], ">", "1"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"curve", "=", 
+          RowBox[{"Fit", "[", 
+           RowBox[{"pts", ",", "values", ",", "x"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Plot", "[", 
+          RowBox[{"curve", ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "0", ",", "10"}], "}"}]}], "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Plot", "[", 
+         RowBox[{"0", ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "0", ",", "10"}], "}"}], ",", " ", 
+          RowBox[{"PlotStyle", "\[Rule]", 
+           RowBox[{"Thickness", "[", "0", "]"}]}]}], "]"}]}], 
+       "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.762693166275878*^9, 3.762693525183096*^9}, {
+   3.762693586622448*^9, 3.762693588721477*^9}, {3.762693843083767*^9, 
+   3.762693845432643*^9}, {3.7626939180854073`*^9, 3.762693924807736*^9}, {
+   3.762694357987411*^9, 3.762694395884636*^9}, 3.762694435976736*^9, {
+   3.7627016386824007`*^9, 3.762701647686317*^9}, {3.762701687187027*^9, 
+   3.762701689794979*^9}, {3.7627031600671*^9, 3.76270318677138*^9}, {
+   3.762703217245221*^9, 3.762703229701522*^9}, {3.762703301840616*^9, 
+   3.7627033266560297`*^9}, {3.762703395674881*^9, 3.7627034197167053`*^9}, {
+   3.762703469351592*^9, 3.762703505195889*^9}, {3.762703576030908*^9, 
+   3.762703603568531*^9}},
+ CellTags->"F1",
+ CellLabel->"In[32]:=",ExpressionUUID->"ef478e83-b016-4eaa-9ea0-24fff4875b82"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"curveBoi", "[", "]"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"command", " ", "click", " ", "on", " ", "mac"}], 
+   "*)"}]}]], "Input",
+ CellChangeTimes->{{3.762693591084889*^9, 3.76269359275533*^9}, {
+  3.7626936338651323`*^9, 3.7626936353222103`*^9}, {3.762703066695017*^9, 
+  3.7627030684863167`*^9}, {3.762703514733206*^9, 3.7627035234334373`*^9}},
+ CellLabel->"In[34]:=",ExpressionUUID->"76ea19fe-4064-41c0-8eba-63abbb962642"],
+
+Cell[BoxData[
+ RowBox[{
+  DynamicModuleBox[{}, 
+   TagBox[
+    StyleBox[
+     DynamicModuleBox[{$CellContext`pts$$ = {{2.65, 3.120000000000001}, {7.42,
+       2.76}, {6.42, 1.6600000000000001`}, {4.13, 6.140000000000001}, {
+      1.43, -1.299999999999999}}, Typeset`show$$ = True, 
+      Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+      Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+      "\"untitled\"", Typeset`specs$$ = {{{
+         Hold[$CellContext`pts$$], {}}, Automatic}}, Typeset`size$$ = {
+      236., {214., 218.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+      Typeset`skipInitDone$$ = True}, 
+      DynamicBox[Manipulate`ManipulateBoxes[
+       1, StandardForm, "Variables" :> {$CellContext`pts$$ = {}}, 
+        "ControllerVariables" :> {}, 
+        "OtherVariables" :> {
+         Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+          Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+          Typeset`specs$$, Typeset`size$$, Typeset`update$$, 
+          Typeset`initDone$$, Typeset`skipInitDone$$}, "Body" :> Show[
+          Graphics[{
+            Point[$CellContext`pts$$]}, PlotRange -> {{0, 10}, {-10, 10}}, 
+           Axes -> True], 
+          $CellContext`makeFunction[$CellContext`pts$$]], 
+        "Specifications" :> {{{$CellContext`pts$$, {}}, Automatic, 
+           ControlType -> Locator, LocatorAutoCreate -> True}}, 
+        "Options" :> {}, "DefaultOptions" :> {}],
+       ImageSizeCache->{287., {246., 252.}},
+       SingleEvaluation->True],
+      Deinitialization:>None,
+      DynamicModuleValues:>{},
+      SynchronousInitialization->True,
+      UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+      UnsavedVariables:>{Typeset`initDone$$},
+      UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+     Deployed->True,
+     StripOnInput->False],
+    Manipulate`InterpretManipulate[1]],
+   DynamicModuleValues:>{}], "[", "]"}]], "Output",
+ CellChangeTimes->{
+  3.7626944052653503`*^9, 3.762701631039021*^9, {3.7627028865863256`*^9, 
+   3.762702922485713*^9}, 3.7627029540145607`*^9, 3.7627030695083637`*^9, 
+   3.762703103409997*^9, 3.762703193425488*^9, 3.762703244356883*^9, {
+   3.762703310327375*^9, 3.76270332955118*^9}, {3.762703510138917*^9, 
+   3.762703524391409*^9}, 3.762703683183271*^9, 3.7627042397936983`*^9},
+ CellLabel->"Out[34]=",ExpressionUUID->"0ec03c47-b877-4669-ac83-3c972b349098"]
+}, Open  ]]
+},
+CellGrouping->Manual,
+WindowSize->{Full, Full},
+WindowMargins->{{20, Automatic}, {Automatic, 44}},
+FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
+2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "F1"->{
+  Cell[2461, 70, 2295, 54, 247, "Input",ExpressionUUID->"ef478e83-b016-4eaa-9ea0-24fff4875b82",
+   CellTags->"F1"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"F1", 7999, 201}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 203, 4, 98, "Title",ExpressionUUID->"29d8829d-0830-4fd5-a6ac-62f48871be80"],
+Cell[764, 26, 1694, 42, 283, "Input",ExpressionUUID->"8a58df14-c7e2-4599-9a30-0b80c8767b28"],
+Cell[2461, 70, 2295, 54, 247, "Input",ExpressionUUID->"ef478e83-b016-4eaa-9ea0-24fff4875b82",
+ CellTags->"F1"],
+Cell[CellGroupData[{
+Cell[4781, 128, 461, 9, 30, "Input",ExpressionUUID->"76ea19fe-4064-41c0-8eba-63abbb962642"],
+Cell[5245, 139, 2416, 47, 517, "Output",ExpressionUUID->"0ec03c47-b877-4669-ac83-3c972b349098"]
+}, Open  ]]
+}
+]
+*)
+

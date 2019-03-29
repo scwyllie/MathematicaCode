@@ -1,0 +1,453 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     16309,        445]
+NotebookOptionsPosition[     13966,        393]
+NotebookOutlinePosition[     14321,        409]
+CellTagsIndexPosition[     14278,        406]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Simple Task 4", "Title",
+ CellChangeTimes->{{3.76005889269836*^9, 3.760058896792096*^9}, {
+  3.760059236659646*^9, 
+  3.76005923973533*^9}},ExpressionUUID->"3778239e-91de-4f2b-b8f7-\
+408880299e73"],
+
+Cell[CellGroupData[{
+
+Cell["Part 1:", "Subsubsection",
+ CellChangeTimes->{{3.760058910193878*^9, 
+  3.760058915989365*^9}},ExpressionUUID->"2b382a65-01ca-41b0-b2ed-\
+d1b88e292a0a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"p1", "[", "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", "ans", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"ans", "=", 
+      RowBox[{"Tuples", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+         "\"\<G\>\"", ",", "\"\<C\>\"", ",", "\"\<P\>\"", ",", "\"\<B\>\""}], 
+         "}"}], ",", "12"}], "]"}]}], ";", 
+     RowBox[{"ans", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{"Sort", ",", "ans"}], "]"}]}], ";", 
+     RowBox[{"ans", "=", 
+      RowBox[{"DeleteDuplicates", "[", "ans", "]"}]}], ";", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<First problem Number of unique combos: \>\"", ",", 
+       RowBox[{"Length", "[", "ans", "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "ans", "]"}], ";"}]}], "\n", "]"}]}]], "Input",
+ CellChangeTimes->{{3.760056546663867*^9, 3.760056571876474*^9}, {
+  3.760056749776476*^9, 3.760056750734476*^9}, {3.760056826454342*^9, 
+  3.7600568328170557`*^9}, {3.760056900462432*^9, 3.760056904395266*^9}, {
+  3.760057080831756*^9, 3.760057128286729*^9}, {3.760057319038678*^9, 
+  3.7600578989611807`*^9}, {3.760058456693286*^9, 3.760058523844942*^9}, {
+  3.760058944749916*^9, 3.760058950317027*^9}},
+ CellLabel->"In[76]:=",ExpressionUUID->"e751f758-91b0-4eb8-b0df-793ed2ccc353"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"p1", "[", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.760058760636338*^9, 3.760058762144929*^9}, 
+   3.760058821635715*^9},
+ CellLabel->"In[65]:=",ExpressionUUID->"abb49b15-3fb1-4ba3-b880-edc70459ee1d"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of unique combos: \"\>", "\[InvisibleSpace]", "455"}],
+  SequenceForm["Number of unique combos: ", 455],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.760058807748906*^9, 3.760058860246477*^9},
+ CellLabel->
+  "During evaluation of \
+In[65]:=",ExpressionUUID->"2dd3cd2d-907f-4c81-93a2-95e014cd7bfb"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Part 2:", "Subsubsection",
+ CellChangeTimes->{{3.760059092479336*^9, 
+  3.760059096503511*^9}},ExpressionUUID->"5aaad761-a0f3-4e74-aec6-\
+f4931369ae78"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"p2", "[", "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"i", ",", "ans"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"i", "=", "1"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"ans", "=", 
+      RowBox[{"p1", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"i", "=", "1"}], ",", 
+       RowBox[{"i", "\[LessEqual]", 
+        RowBox[{"Length", "[", "ans", "]"}]}], ",", 
+       RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"MemberQ", "[", 
+           RowBox[{
+            RowBox[{"ans", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", "\"\<C\>\""}], "]"}], 
+          "\[Equal]", "False"}], ",", 
+         RowBox[{
+          RowBox[{"ans", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "=", 
+          RowBox[{"{", "}"}]}], ",", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"MemberQ", "[", 
+             RowBox[{
+              RowBox[{"ans", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], ",", "\"\<B\>\""}], "]"}], 
+            "\[Equal]", "False"}], ",", 
+           RowBox[{
+            RowBox[{"ans", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "=", 
+            RowBox[{"{", "}"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"MemberQ", "[", 
+               RowBox[{
+                RowBox[{"ans", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], ",", "\"\<P\>\""}], "]"}], 
+              "\[Equal]", "False"}], ",", 
+             RowBox[{
+              RowBox[{"ans", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "=", 
+              RowBox[{"{", "}"}]}], ",", 
+             RowBox[{
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"MemberQ", "[", 
+                  RowBox[{
+                   RowBox[{"ans", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], ",", "\"\<G\>\""}], "]"}],
+                  "\[Equal]", "False"}], ",", 
+                RowBox[{
+                 RowBox[{"ans", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "=", 
+                 RowBox[{"{", "}"}]}], ",", "_"}], "]"}], ";"}]}], 
+            "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+        "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"i", "=", "1"}], ",", 
+       RowBox[{"i", "\[LessEqual]", 
+        RowBox[{"Length", "[", "ans", "]"}]}], ",", 
+       RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"ans", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "\[Equal]", 
+          RowBox[{"{", "}"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"ans", "=", 
+           RowBox[{"Delete", "[", 
+            RowBox[{"ans", ",", "i"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"i", "--"}]}], ",", "_"}], "]"}]}], "\[IndentingNewLine]", 
+      "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<Second problem length of unique combos: \>\"", ",", 
+       RowBox[{"Length", "[", "ans", "]"}]}], " ", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "ans", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.760058582808629*^9, 3.760058587468141*^9}, {
+   3.760058926703291*^9, 3.760058970980645*^9}, 3.760059079379113*^9},
+ CellLabel->"In[75]:=",ExpressionUUID->"103fa225-6a63-4d4c-8b2d-8b860b12c727"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"p2", "[", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.760058867515605*^9, 3.760058869565976*^9}},
+ CellLabel->"In[66]:=",ExpressionUUID->"ce2b66a9-c392-4c1b-8cb9-76b36e398f74"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of unique combos: \"\>", "\[InvisibleSpace]", "455"}],
+  SequenceForm["Number of unique combos: ", 455],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.760058909812338*^9},
+ CellLabel->
+  "During evaluation of \
+In[66]:=",ExpressionUUID->"ce13cb83-3136-4bb6-8046-acf2ee3f428d"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Second problem length of unique combos\"\>", 
+   "\[InvisibleSpace]", "165"}],
+  SequenceForm["Second problem length of unique combos", 165],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.760058909821906*^9},
+ CellLabel->
+  "During evaluation of \
+In[66]:=",ExpressionUUID->"ed67c24a-739b-4813-b1ee-38da5b8ac786"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Part 3:", "Subsubsection",
+ CellChangeTimes->{{3.7600591053605967`*^9, 
+  3.7600591091915493`*^9}},ExpressionUUID->"eaf4be4b-d958-43ef-8357-\
+e9f191d14173"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"p3", "[", "]"}], ":=", "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"ans", ",", " ", "i"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"ans", "=", 
+       RowBox[{"p2", "[", "]"}]}], ";", 
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"i", "=", "1"}], ",", 
+        RowBox[{"i", "\[LessEqual]", 
+         RowBox[{"Length", "[", "ans", "]"}]}], ",", 
+        RowBox[{"i", "++"}], ",", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Count", "[", 
+            RowBox[{
+             RowBox[{"ans", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], ",", "\"\<C\>\""}], "]"}], ">", 
+           "6"}], ",", 
+          RowBox[{
+           RowBox[{"ans", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "=", 
+           RowBox[{"{", "}"}]}], ",", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Count", "[", 
+              RowBox[{
+               RowBox[{"ans", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], ",", "\"\<B\>\""}], "]"}], 
+             ">", "6"}], ",", 
+            RowBox[{
+             RowBox[{"ans", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "=", 
+             RowBox[{"{", "}"}]}], ",", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Count", "[", 
+                RowBox[{
+                 RowBox[{"ans", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], ",", "\"\<P\>\""}], "]"}], 
+               ">", "6"}], ",", 
+              RowBox[{
+               RowBox[{"ans", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "=", 
+               RowBox[{"{", "}"}]}], ",", 
+              RowBox[{
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"Count", "[", 
+                   RowBox[{
+                    RowBox[{"ans", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], ",", "\"\<G\>\""}], "]"}],
+                   ">", "6"}], ",", 
+                 RowBox[{
+                  RowBox[{"ans", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}], "=", 
+                  RowBox[{"{", "}"}]}], ",", "_"}], "]"}], ";"}]}], 
+             "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+         "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"i", "=", "1"}], ",", 
+        RowBox[{"i", "\[LessEqual]", 
+         RowBox[{"Length", "[", "ans", "]"}]}], ",", 
+        RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"ans", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "\[Equal]", 
+           RowBox[{"{", "}"}]}], ",", 
+          RowBox[{
+           RowBox[{"ans", "=", 
+            RowBox[{"Delete", "[", 
+             RowBox[{"ans", ",", "i"}], "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"i", "--"}]}], ",", "_"}], "]"}]}], " ", "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<Third problem length of unique combos: \>\"", ",", 
+        RowBox[{"Length", "[", "ans", "]"}]}], " ", "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", "ans", "]"}], ";"}]}], "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.760058985095121*^9, 3.7600589936858253`*^9}, 
+   3.760059075838525*^9},
+ CellLabel->"In[74]:=",ExpressionUUID->"8fe59396-6d25-4ad1-a699-9570ceb6a4fb"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"p3", "[", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.760059000446075*^9, 3.760059004024518*^9}},
+ CellLabel->"In[77]:=",ExpressionUUID->"de56d6c5-e655-47f8-931c-507af7c0a084"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"First problem Number of unique combos: \"\>", 
+   "\[InvisibleSpace]", "455"}],
+  SequenceForm["First problem Number of unique combos: ", 455],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.76005904212179*^9, 3.760059161225923*^9},
+ CellLabel->
+  "During evaluation of \
+In[77]:=",ExpressionUUID->"69587360-9e42-42f4-b5f4-93f0c6e4c2b7"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Second problem length of unique combos: \"\>", 
+   "\[InvisibleSpace]", "165"}],
+  SequenceForm["Second problem length of unique combos: ", 165],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.76005904212179*^9, 3.7600591612382298`*^9},
+ CellLabel->
+  "During evaluation of \
+In[77]:=",ExpressionUUID->"9ebea540-fd4b-4fa9-8c2b-e9f7120a29a7"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Third problem length of unique combos: \"\>", 
+   "\[InvisibleSpace]", "125"}],
+  SequenceForm["Third problem length of unique combos: ", 125],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.76005904212179*^9, 3.760059161251902*^9},
+ CellLabel->
+  "During evaluation of \
+In[77]:=",ExpressionUUID->"d20d8222-8282-43d7-8d2d-402fe7946556"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.760056737824041*^9, 
+  3.76005674781036*^9}},ExpressionUUID->"370e8932-9676-44a8-9361-\
+8b9812df2187"],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{3.7600566593795958`*^9, 3.760056739879099*^9},
+ CellLabel->"Out[11]=",ExpressionUUID->"4e49c957-cdfa-45dd-98b8-d596a2d3d155"],
+
+Cell[BoxData["125"], "Output",
+ CellChangeTimes->{3.7600566593795958`*^9, 3.760056739891217*^9},
+ CellLabel->"Out[12]=",ExpressionUUID->"357ae1f9-1d88-4f4b-8e8f-d6b78b8b0369"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 853},
+WindowMargins->{{212, Automatic}, {Automatic, 27}},
+FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
+2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 203, 4, 98, "Title",ExpressionUUID->"3778239e-91de-4f2b-b8f7-408880299e73"],
+Cell[CellGroupData[{
+Cell[808, 30, 158, 3, 45, "Subsubsection",ExpressionUUID->"2b382a65-01ca-41b0-b2ed-d1b88e292a0a"],
+Cell[969, 35, 1391, 30, 199, "Input",ExpressionUUID->"e751f758-91b0-4eb8-b0df-793ed2ccc353"],
+Cell[CellGroupData[{
+Cell[2385, 69, 239, 5, 30, "Input",ExpressionUUID->"abb49b15-3fb1-4ba3-b880-edc70459ee1d"],
+Cell[2627, 76, 359, 8, 24, "Print",ExpressionUUID->"2dd3cd2d-907f-4c81-93a2-95e014cd7bfb"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3035, 90, 158, 3, 45, "Subsubsection",ExpressionUUID->"5aaad761-a0f3-4e74-aec6-f4931369ae78"],
+Cell[3196, 95, 3837, 95, 472, "Input",ExpressionUUID->"103fa225-6a63-4d4c-8b2d-8b860b12c727"],
+Cell[CellGroupData[{
+Cell[7058, 194, 213, 4, 30, "Input",ExpressionUUID->"ce2b66a9-c392-4c1b-8cb9-76b36e398f74"],
+Cell[CellGroupData[{
+Cell[7296, 202, 337, 8, 24, "Print",ExpressionUUID->"ce13cb83-3136-4bb6-8046-acf2ee3f428d"],
+Cell[7636, 212, 367, 9, 24, "Print",ExpressionUUID->"ed67c24a-739b-4813-b1ee-38da5b8ac786"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8064, 228, 162, 3, 45, "Subsubsection",ExpressionUUID->"eaf4be4b-d958-43ef-8357-e9f191d14173"],
+Cell[8229, 233, 3700, 95, 430, "Input",ExpressionUUID->"8fe59396-6d25-4ad1-a699-9570ceb6a4fb"],
+Cell[CellGroupData[{
+Cell[11954, 332, 213, 4, 30, "Input",ExpressionUUID->"de56d6c5-e655-47f8-931c-507af7c0a084"],
+Cell[CellGroupData[{
+Cell[12192, 340, 390, 9, 24, "Print",ExpressionUUID->"69587360-9e42-42f4-b5f4-93f0c6e4c2b7"],
+Cell[12585, 351, 394, 9, 24, "Print",ExpressionUUID->"9ebea540-fd4b-4fa9-8c2b-e9f7120a29a7"],
+Cell[12982, 362, 390, 9, 24, "Print",ExpressionUUID->"d20d8222-8282-43d7-8d2d-402fe7946556"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13421, 377, 151, 3, 30, "Input",ExpressionUUID->"370e8932-9676-44a8-9361-8b9812df2187"],
+Cell[13575, 382, 173, 2, 34, "Output",ExpressionUUID->"4e49c957-cdfa-45dd-98b8-d596a2d3d155"],
+Cell[13751, 386, 175, 2, 34, "Output",ExpressionUUID->"357ae1f9-1d88-4f4b-8e8f-d6b78b8b0369"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
