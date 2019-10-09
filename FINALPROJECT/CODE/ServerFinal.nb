@@ -1,0 +1,456 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     19099,        448]
+NotebookOptionsPosition[     18474,        430]
+NotebookOutlinePosition[     18860,        447]
+CellTagsIndexPosition[     18817,        444]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"g", "=", 
+   RowBox[{"SocketOpen", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"IPAddress", "[", "\"\<192.168.1.147\>\"", "]"}], ",", 
+       "1234"}], "}"}], ",", "\"\<TCP\>\""}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.765657377843644*^9, 
+  3.7656573793806252`*^9}},ExpressionUUID->"78dee17e-95ad-4b00-aa53-\
+c934a515b0a1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Global", " ", 
+    RowBox[{"Variables", ":"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"currentReadSize", " ", "=", " ", "0"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"messageSize", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"message", "=", " ", "\"\<\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Needs", "[", "\"\<DatabaseLink`\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"cinna", "=", 
+     RowBox[{
+     "NetModel", "[", 
+      "\"\<OpenFace Face Recognition Net Trained on CASIA-WebFace and \
+FaceScrub Data\>\"", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"id", "[", "pic_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "x", ",", "i", ",", "idList", ",", "sam", ",", "count", ",", "name", 
+        ",", "nameID"}], "}"}], ",", 
+      RowBox[{"(*", 
+       RowBox[{"pic", "=", 
+        RowBox[{"cinna", "[", "pic", "]"}]}], "*)"}], "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"conn", "=", 
+        RowBox[{"OpenSQLConnection", "[", 
+         RowBox[{
+          RowBox[{"JDBC", "[", 
+           RowBox[{"\"\<PostgreSQL\>\"", ",", "\"\<:5432/Sierra\>\""}], "]"}],
+           ",", 
+          RowBox[{"\"\<Name\>\"", "\[Rule]", "\"\<Sierra\>\""}], ",", 
+          RowBox[{"\"\<Username\>\"", "\[Rule]", "\"\<Sierra\>\""}], ",", 
+          RowBox[{"\"\<Password\>\"", "\[Rule]", "\"\<DrellaVU42\>\""}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"idList", "=", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"count", "=", "1"}], ",", 
+         RowBox[{"count", "\[LessEqual]", "14"}], 
+         RowBox[{"(*", 
+          RowBox[{"change", " ", "as", " ", "needed"}], "*)"}], ",", 
+         RowBox[{"count", "++"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"x", "=", 
+           RowBox[{"SQLSelect", "[", 
+            RowBox[{
+            "conn", ",", "\"\<class2\>\"", ",", "\"\<featurev\>\"", ",", 
+             RowBox[{
+              RowBox[{"SQLColumn", "[", "\"\<id\>\"", "]"}], "\[Equal]", 
+              "count"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"x", "=", 
+           RowBox[{"ToExpression", "[", "x", "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Print", "[", 
+           RowBox[{"Length", "[", "x", "]"}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"sam", "=", 
+           RowBox[{"RandomSample", "[", 
+            RowBox[{"x", ",", "50"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"EuclideanDistance", "[", 
+                RowBox[{"pic", ",", 
+                 RowBox[{"x", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"1", ",", "1"}], "]"}], "]"}]}], "]"}], 
+               "\[LessEqual]", ".8"}], 
+              RowBox[{"(*", "tune", "*)"}], ",", 
+              RowBox[{"idList", "=", 
+               RowBox[{"AppendTo", "[", 
+                RowBox[{"idList", ",", "count"}], "]"}]}]}], "]"}], ";"}], 
+           "*)"}], 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"Print", "[", "sam", "]"}], ";"}], "*)"}], 
+          RowBox[{"For", "[", 
+           RowBox[{
+            RowBox[{"i", "=", "1"}], ",", 
+            RowBox[{"i", "\[LessEqual]", "50"}], 
+            RowBox[{"(*", "tune", "*)"}], ",", 
+            RowBox[{"i", "++"}], ",", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"EuclideanDistance", "[", 
+                RowBox[{"pic", ",", 
+                 RowBox[{"sam", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"i", ",", "1"}], "]"}], "]"}]}], "]"}], 
+               "\[LessEqual]", ".6"}], 
+              RowBox[{"(*", "tune", "*)"}], ",", 
+              RowBox[{
+               RowBox[{"idList", "=", 
+                RowBox[{"AppendTo", "[", 
+                 RowBox[{"idList", ",", "count"}], "]"}]}], ";"}]}], "]"}]}], 
+           "]"}]}]}], "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", "idList", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Length", "[", "idList", "]"}], "\[Equal]", "0"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Return", "[", "\"\<Unkown\>\"", "]"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"nameID", "=", 
+        RowBox[{"Commonest", "@", "idList"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"name", "=", 
+        RowBox[{
+         RowBox[{"SQLSelect", "[", 
+          RowBox[{"conn", ",", "\"\<class2\>\"", ",", "\"\<name\>\"", ",", 
+           RowBox[{
+            RowBox[{"SQLColumn", "[", "\"\<id\>\"", "]"}], "\[Equal]", 
+            RowBox[{"nameID", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}]}], "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{"1", ",", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", "name", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Return", "[", "name", "]"}], ";"}]}], "]"}]}], 
+   "\[IndentingNewLine]", "\n"}]}]], "Input",
+ CellChangeTimes->{{3.7656578165440407`*^9, 3.7656578767619953`*^9}, {
+   3.7656580087457905`*^9, 3.7656580091507998`*^9}, {3.765659690345894*^9, 
+   3.765659699045742*^9}, {3.7656598647579308`*^9, 3.7656598653219337`*^9}, {
+   3.765828958582202*^9, 3.76582899417719*^9}, {3.765829031825171*^9, 
+   3.765829056714763*^9}, {3.7658317571181374`*^9, 3.7658317607104692`*^9}, 
+   3.765843864084125*^9, {3.7658443491925697`*^9, 3.765844369088537*^9}},
+ CellLabel->
+  "In[216]:=",ExpressionUUID->"82c258dd-b9ee-4c66-bf9a-c5f46ffcd442"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"listener", " ", "=", " ", 
+   RowBox[{"SocketListen", "[", 
+    RowBox[{"g", ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"(", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"currentReadSize", " ", "\[Equal]", " ", "messageSize"}], 
+           ")"}], "||", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"StringTake", "[", 
+               RowBox[{"message", ",", "3"}], "]"}], " ", "\[Equal]", " ", 
+              "\"\<{{{\>\""}], " ", ")"}], "&&", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"StringTake", "[", 
+               RowBox[{"message", ",", "3"}], "]"}], "\[Equal]", " ", 
+              RowBox[{"StringTake", "[", 
+               RowBox[{"message", ",", 
+                RowBox[{"-", "3"}]}], "]"}]}], ")"}]}], ")"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"For", "[", 
+           RowBox[{
+            RowBox[{"i", " ", "=", " ", "1"}], ",", " ", 
+            RowBox[{"i", " ", "\[LessEqual]", " ", "8"}], ",", " ", 
+            RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"StringTake", "[", 
+                RowBox[{
+                 RowBox[{"#", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], ",", 
+                 RowBox[{"{", "i", "}"}]}], "]"}], "\[Equal]", "\"\<~\>\""}], 
+              ",", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"messageSize", "=", " ", 
+                RowBox[{"ToExpression", "[", 
+                 RowBox[{"StringTake", "[", 
+                  RowBox[{
+                   RowBox[{"#", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                   RowBox[{"(", 
+                    RowBox[{"i", "-", "1"}], ")"}]}], "]"}], "]"}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"message", " ", "=", 
+                RowBox[{"StringTake", "[", 
+                 RowBox[{
+                  RowBox[{"#", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], ",", " ", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"i", "+", "1"}], ",", " ", 
+                    RowBox[{"StringLength", "@", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}]}], "}"}]}], "]"}]}], ";",
+                "\[IndentingNewLine]", 
+               RowBox[{"currentReadSize", " ", "=", " ", 
+                RowBox[{"StringLength", "@", "message"}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+             "]"}]}], "\[IndentingNewLine]", "]"}], ";", 
+          "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+              "currentReadSize", " ", "\[Equal]", " ", "messageSize"}], ")"}],
+              "||", " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"StringTake", "[", 
+                  RowBox[{"message", ",", "3"}], "]"}], " ", "\[Equal]", " ", 
+                 "\"\<{{{\>\""}], " ", ")"}], "&&", " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"StringTake", "[", 
+                  RowBox[{"message", ",", "3"}], "]"}], "\[Equal]", " ", 
+                 RowBox[{"StringTake", "[", 
+                  RowBox[{"message", ",", 
+                   RowBox[{"-", "3"}]}], "]"}]}], ")"}]}], ")"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"ArrayQ", "[", 
+               RowBox[{"ToExpression", "[", "message", "]"}], "]"}], 
+              "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+              RowBox[{"WriteString", "[", 
+               RowBox[{
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], ",", " ", 
+                RowBox[{"ToString", "@", 
+                 RowBox[{"id", "[", 
+                  RowBox[{"cinna", "[", 
+                   RowBox[{"Image", "@", 
+                    RowBox[{"ToExpression", "@", "message"}]}], "]"}], 
+                  "]"}]}]}], "]"}], "\[IndentingNewLine]", ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"WriteString", "[", 
+               RowBox[{
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], ",", " ", 
+                RowBox[{
+                "message", " ", "<>", " ", "\"\< - from server\>\""}]}], 
+               "]"}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]",
+            "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"message", " ", "=", 
+           RowBox[{"message", " ", "<>", " ", 
+            RowBox[{"#", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"currentReadSize", " ", "=", 
+           RowBox[{"currentReadSize", "+", " ", 
+            RowBox[{"StringLength", "@", 
+             RowBox[{"#", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}]}]}], ";", 
+          "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+              "currentReadSize", " ", "\[Equal]", " ", "messageSize"}], ")"}],
+              "||", " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"StringTake", "[", 
+                  RowBox[{"message", ",", "3"}], "]"}], " ", "\[Equal]", " ", 
+                 "\"\<{{{\>\""}], " ", ")"}], "&&", " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"StringTake", "[", 
+                  RowBox[{"message", ",", "3"}], "]"}], "\[Equal]", " ", 
+                 RowBox[{"StringTake", "[", 
+                  RowBox[{"message", ",", 
+                   RowBox[{"-", "3"}]}], "]"}]}], ")"}]}], ")"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"ArrayQ", "[", 
+               RowBox[{"ToExpression", "[", "message", "]"}], "]"}], 
+              "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+              "\[IndentingNewLine]", 
+              RowBox[{"WriteString", "[", 
+               RowBox[{
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], ",", " ", 
+                RowBox[{"ToString", "@", 
+                 RowBox[{"id", "[", 
+                  RowBox[{"cinna", "[", 
+                   RowBox[{"Image", "@", 
+                    RowBox[{"ToExpression", "@", "message"}]}], "]"}], 
+                  "]"}]}]}], "]"}], "\[IndentingNewLine]", ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"WriteString", "[", 
+               RowBox[{
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], ",", " ", 
+                RowBox[{
+                "message", " ", "<>", " ", "\"\< - from server\>\""}]}], 
+               "]"}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]",
+            "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", 
+          RowBox[{"For", "[", 
+           RowBox[{
+            RowBox[{"i", " ", "=", " ", "1"}], ",", " ", 
+            RowBox[{"i", " ", "\[LessEqual]", " ", "8"}], ",", " ", 
+            RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"StringTake", "[", 
+                RowBox[{
+                 RowBox[{"#", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], ",", 
+                 RowBox[{"{", "i", "}"}]}], "]"}], "\[Equal]", "\"\<~\>\""}], 
+              ",", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"messageSize", "=", " ", 
+                RowBox[{"ToExpression", "[", 
+                 RowBox[{"StringTake", "[", 
+                  RowBox[{
+                   RowBox[{"#", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                   RowBox[{"(", 
+                    RowBox[{"i", "-", "1"}], ")"}]}], "]"}], "]"}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"message", " ", "=", 
+                RowBox[{"StringTake", "[", 
+                 RowBox[{
+                  RowBox[{"#", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], ",", " ", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"i", "+", "1"}], ",", " ", 
+                    RowBox[{"StringLength", "@", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}]}], "}"}]}], "]"}]}], ";",
+                "\[IndentingNewLine]", 
+               RowBox[{"currentReadSize", " ", "=", " ", 
+                RowBox[{"StringLength", "@", "message"}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+             "]"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", ")"}], "&"}]}], "\[IndentingNewLine]", 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.765657898079867*^9, 3.765657946209877*^9}, {
+   3.765658014255794*^9, 3.765658031567802*^9}, {3.765658147415544*^9, 
+   3.765658151053982*^9}, {3.7656584739941416`*^9, 3.765658508888096*^9}, {
+   3.765658671436573*^9, 3.765658849979904*^9}, {3.7656592412244673`*^9, 
+   3.7656592573284607`*^9}, {3.7656593909884443`*^9, 
+   3.7656593976203766`*^9}, {3.765659458006246*^9, 3.7656595403772883`*^9}, {
+   3.7656596093683853`*^9, 3.76565966501699*^9}, {3.7656597018407183`*^9, 
+   3.76565971882362*^9}, {3.7656597643266315`*^9, 3.765659789459423*^9}, {
+   3.765659870676196*^9, 3.765659914121811*^9}, {3.765660000056948*^9, 
+   3.765660084745302*^9}, {3.765660151579219*^9, 3.7656602714291077`*^9}, {
+   3.765660326265376*^9, 3.765660326451067*^9}, {3.7657603879840765`*^9, 
+   3.7657605429802384`*^9}, {3.7658208706687045`*^9, 
+   3.7658208875680227`*^9}, {3.7658212487187557`*^9, 
+   3.7658212549277706`*^9}, {3.7658223165580807`*^9, 
+   3.7658223444620914`*^9}, {3.765822630304738*^9, 3.7658226518537083`*^9}, {
+   3.765824060215163*^9, 3.765824074993238*^9}, {3.7658308404892855`*^9, 
+   3.7658308600223117`*^9}, {3.765831212246776*^9, 3.7658312210717974`*^9}, {
+   3.7658313020211506`*^9, 3.765831395734219*^9}, {3.765831636107471*^9, 
+   3.765831636641037*^9}, 3.7658322144173727`*^9, {3.7658390014480453`*^9, 
+   3.7658390188950434`*^9}, 3.765844549657905*^9, {3.766343852565818*^9, 
+   3.766343986308942*^9}, {3.766344215532889*^9, 3.7663442285574193`*^9}, {
+   3.766344259805457*^9, 
+   3.7663442733803897`*^9}},ExpressionUUID->"03538fa8-e9a3-404e-82fa-\
+47b34ddf4d01"],
+
+Cell[BoxData[
+ RowBox[{"RunProcess", "[", 
+  RowBox[{"{", 
+   RowBox[{"\"\<tmux\>\"", ",", "\"\<detach\>\""}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7656574065705233`*^9, 3.7656574065957594`*^9}, 
+   3.765657524926194*^9},ExpressionUUID->"9f8b70d8-2f43-4f0c-bf1f-\
+6b46f4730ce6"]
+},
+WindowSize->{808, 853},
+WindowMargins->{{283, Automatic}, {Automatic, 29}},
+Magnification:>0.95 Inherited,
+FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
+2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 393, 11, 30, "Input",ExpressionUUID->"78dee17e-95ad-4b00-aa53-c934a515b0a1"],
+Cell[954, 33, 5977, 141, 571, "Input",ExpressionUUID->"82c258dd-b9ee-4c66-bf9a-c5f46ffcd442"],
+Cell[6934, 176, 11246, 244, 1051, "Input",ExpressionUUID->"03538fa8-e9a3-404e-82fa-47b34ddf4d01"],
+Cell[18183, 422, 287, 6, 27, "Input",ExpressionUUID->"9f8b70d8-2f43-4f0c-bf1f-6b46f4730ce6"]
+}
+]
+*)
+

@@ -1,0 +1,1095 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     56226,       1087]
+NotebookOptionsPosition[     55667,       1068]
+NotebookOutlinePosition[     56023,       1084]
+CellTagsIndexPosition[     55980,       1081]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Main", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.766344450302697*^9, 3.7663444524367332`*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"cc934c74-552f-4550-b19a-faa7096594da"],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`colorTask$$, $CellContext`nb$$, \
+$CellContext`dimensions$$ = Dynamic[
+   AbsoluteCurrentValue[
+   WindowSize]], $CellContext`input$$, $CellContext`string$$, \
+$CellContext`message$$ = "", $CellContext`sent$$ = 
+  False, $CellContext`read$$ = 
+  False, $CellContext`readTask1$$, $CellContext`readTask2$$, \
+$CellContext`num$$, $CellContext`picS4$$ = 
+  "Copy JPG picture here", $CellContext`picFS4$$, $CellContext`picS5$$ = 
+  "Copy JPG picture here", $CellContext`picFS5$$, $CellContext`imageFH$$, \
+$CellContext`displayS4$$ = "", $CellContext`url$$ = 
+  "http://example.com", $CellContext`stS1R$$, $CellContext`displayS2R$$, \
+$CellContext`displayS3P$$, $CellContext`displayS3N$$, $CellContext`picFS3$$, \
+$CellContext`stS3Send$$, $CellContext`stS3Read$$, $CellContext`stS4$$, \
+$CellContext`repS4$$, $CellContext`stS4R$$, $CellContext`displayS5$$, \
+$CellContext`displayS5E$$, $CellContext`stS5$$, $CellContext`stS5R$$, \
+$CellContext`repS5$$}, 
+  TemplateBox[{FrontEndObject[
+     LinkObject["zy83s_shm", 3, 1]],35,
+    "FrontEndObject[LinkObject[\"zy83s_shm\", 3, 1]]","35","\"POI Finder\""},
+   "NotebookObjectUnsaved"],
+  DynamicModuleValues:>{{DownValues[$CellContext`imageFH$$] = {HoldPattern[
+         $CellContext`imageFH$$[
+          Pattern[$CellContext`pic, 
+           Blank[]]]] :> Module[{}, 
+         Return[
+          ImageResize[
+           HighlightImage[$CellContext`pic, 
+            Part[
+             FindFaces[$CellContext`pic], 1]], Small]]]}}}]], "Output",
+ CellChangeTimes->{
+  3.7663444627363777`*^9, 3.766345660204521*^9, 3.766365086280205*^9, 
+   3.766366807949749*^9, 3.766367572912506*^9, {3.7663677719373255`*^9, 
+   3.766367779178101*^9}, 3.766368478248851*^9, 3.7663692461776457`*^9, 
+   3.766370036734899*^9, 3.766481718304747*^9},
+ CellLabel->"Out[19]=",ExpressionUUID->"dc1cf264-42dd-4186-96b6-48f878343078"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"server", " ", "=", "  ", 
+   RowBox[{"SocketConnect", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"IPAddress", "[", "\"\<161.6.5.177\>\"", "]"}], ",", "1234"}], 
+      "}"}], ",", "\"\<TCP\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Main", "[", "]"}], " ", ":=", " ", 
+  RowBox[{"DynamicModule", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "colorTask", ",", "nb", ",", "dimensions", ",", "input", ",", "string", 
+      ",", " ", "message", ",", " ", 
+      RowBox[{"sent", " ", "=", " ", "False"}], ",", " ", 
+      RowBox[{"read", "  ", "=", "False"}], ",", "readTask1", ",", "  ", 
+      "readTask2", ",", "num", ",", 
+      RowBox[{"picS4", "=", "\"\<Copy JPG picture here\>\""}], ",", "picFS4", 
+      ",", 
+      RowBox[{"picS5", "=", "\"\<Copy JPG picture here\>\""}], " ", ",", " ", 
+      "picFS5", ",", "imageFH", ",", 
+      RowBox[{"displayS4", " ", "=", "\"\<\>\""}], ",", 
+      RowBox[{"url", " ", "=", "\"\<http://example.com\>\""}], ",", "stS1R", 
+      ",", "displayS2R", ",", "displayS3P", ",", "displayS3N", ",", "picFS3", 
+      ",", "stS3Send", ",", "stS3Read", ",", "stS4", ",", "repS4", ",", 
+      "stS4R", ",", "displayS5", ",", "displayS5E", ",", "stS5", ",", "stS5R",
+       ",", "repS5"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"dimensions", " ", "=", " ", 
+      RowBox[{"Dynamic", "@", 
+       RowBox[{"AbsoluteCurrentValue", "[", "WindowSize", "]"}]}]}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"imageFH", "[", "pic_", "]"}], ":=", 
+      RowBox[{"Module", "[", 
+       RowBox[{
+        RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", 
+         RowBox[{"ImageResize", "[", 
+          RowBox[{
+           RowBox[{"HighlightImage", "[", 
+            RowBox[{"pic", ",", 
+             RowBox[{
+              RowBox[{"FindFaces", "[", "pic", "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", "Small"}], "]"}], 
+         "]"}]}], "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"message", " ", "=", " ", "\"\<\>\""}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"screens", " ", "=", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{"screen", " ", "1", " ", "or", " ", "main", " ", "menu"}], 
+        "*)"}], "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Column", "[", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"TextCell", "[", 
+            RowBox[{
+             RowBox[{"Text", "[", 
+              RowBox[{"Style", "[", 
+               RowBox[{"\"\<POI Tracker\>\"", ",", 
+                RowBox[{"FontFamily", "\[Rule]", "\"\<Comic Sans MS\>\""}], 
+                ",", " ", 
+                RowBox[{"FontSize", "\[Rule]", "100"}], ",", 
+                RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}], "]"}], 
+             ",", "\"\<Output\>\"", ",", 
+             RowBox[{"ShowStringCharacters", "\[Rule]", "False"}]}], "]"}], 
+           "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+           RowBox[{"TextCell", "[", 
+            RowBox[{"Text", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{"\"\<Choose an option:\>\"", ",", " ", 
+               RowBox[{"FontFamily", "\[Rule]", "\"\<Comic Sans MS\>\""}], 
+               ",", " ", 
+               RowBox[{"FontSize", "\[Rule]", "25"}], ",", " ", 
+               RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}], "]"}], 
+            "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+           RowBox[{"Row", "[", 
+            RowBox[{"{", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"Column", "[", 
+               RowBox[{"{", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"Button", "[", 
+                  RowBox[{"\"\<Identify from an image file\>\"", ",", 
+                   RowBox[{"num", " ", "=", " ", "4"}]}], "]"}], 
+                 "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+                 RowBox[{"Button", "[", 
+                  RowBox[{
+                  "\"\<Refresh Server\>\"", ",", "\[IndentingNewLine]", " ", 
+                   RowBox[{"stS1R", " ", "=", " ", 
+                    RowBox[{"SessionSubmit", "@", 
+                    RowBox[{"ScheduledTask", "[", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"SocketReadyQ", "@", "server"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"(", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"displayS1R", " ", "=", 
+                    RowBox[{"ByteArrayToString", "@", 
+                    RowBox[{"SocketReadMessage", "[", "server", "]"}]}]}], 
+                    ";", "\[IndentingNewLine]", 
+                    RowBox[{"TaskRemove", "[", "stS1R", "]"}], ";"}], " ", 
+                    "\[IndentingNewLine]", ")"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"WriteString", "[", 
+                    RowBox[{
+                    "server", ",", " ", "\"\<15~Done Refreshing\>\""}], 
+                    "]"}]}], "\[IndentingNewLine]", "]"}], 
+                    "\[IndentingNewLine]", ",", ".33"}], "]"}]}]}]}], "]"}]}],
+                 "\[IndentingNewLine]", "}"}], "]"}], "\[IndentingNewLine]", 
+              ",", "\[IndentingNewLine]", 
+              RowBox[{"Column", "[", 
+               RowBox[{"{", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"Button", "[", 
+                  RowBox[{"\"\<Identify from IpWebCam.\>\"", ",", 
+                   RowBox[{"num", "=", "2"}]}], "]"}], ",", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"Button", "[", 
+                  RowBox[{"\"\<Identify from laptop camera\>\"", ",", 
+                   RowBox[{"num", "=", "5"}]}], "]"}]}], 
+                "\[IndentingNewLine]", "}"}], "]"}]}], "\[IndentingNewLine]", 
+             "}"}], "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+           RowBox[{"Button", "[", 
+            RowBox[{"\"\<Quit\>\"", ",", " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"TaskRemove", "[", 
+                RowBox[{"Tasks", "[", "]"}], "]"}], ";", 
+               RowBox[{"NotebookClose", "[", "]"}], ";"}], ")"}]}], "]"}], 
+           "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+           RowBox[{"TextCell", "[", 
+            RowBox[{"Text", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+               RowBox[{"Dynamic", "[", 
+                RowBox[{"displayS1R", ",", 
+                 RowBox[{"Initialization", "\[RuleDelayed]", 
+                  RowBox[{"(", 
+                   RowBox[{"displayS1R", " ", "=", "\"\<\>\""}], ")"}]}]}], 
+                "]"}], ",", " ", 
+               RowBox[{"FontFamily", "\[Rule]", "\"\<Comic Sans MS\>\""}], 
+               ",", 
+               RowBox[{"FontSize", "\[Rule]", "25"}], ",", 
+               RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}], "]"}], 
+            "]"}]}], "\[IndentingNewLine]", "}"}], "]"}], 
+        "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{"screen", " ", "2", " ", "or", " ", "URL"}], "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{"Column", "[", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"TextCell", "[", 
+            RowBox[{
+             RowBox[{"Text", "[", 
+              RowBox[{"Style", "[", 
+               RowBox[{"\"\<POI Tracker\>\"", ",", 
+                RowBox[{"FontFamily", "\[Rule]", "\"\<Comic Sans MS\>\""}], 
+                ",", " ", 
+                RowBox[{"FontSize", "\[Rule]", "100"}], ",", 
+                RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}], "]"}], 
+             ",", "\"\<Output\>\"", ",", 
+             RowBox[{"ShowStringCharacters", "\[Rule]", "False"}]}], "]"}], 
+           "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+           RowBox[{"TextCell", "[", 
+            RowBox[{"Text", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{"\"\<Enter URL for IpWebCam:\>\"", ",", " ", 
+               RowBox[{"FontFamily", "\[Rule]", "\"\<Comic Sans MS\>\""}], 
+               ",", " ", 
+               RowBox[{"FontSize", "\[Rule]", "25"}], ",", " ", 
+               RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}], "]"}], 
+            "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"InputField", "[", 
+            RowBox[{
+             RowBox[{"Dynamic", "[", 
+              RowBox[{"url", ",", " ", 
+               RowBox[{"Initialization", "\[RuleDelayed]", 
+                RowBox[{"(", 
+                 RowBox[{"url", " ", "=", "\"\<http://example.com\>\""}], 
+                 ")"}]}]}], "]"}], ",", " ", "String"}], "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Button", "[", 
+            RowBox[{"\"\<Analyze Stream\>\"", ",", " ", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"!", 
+                RowBox[{"FailureQ", "@", 
+                 RowBox[{"Quiet", "@", 
+                  RowBox[{"Import", "[", 
+                   RowBox[{"url", ",", "\"\<JPEG\>\""}], "]"}]}]}]}], ",", 
+               "\[IndentingNewLine]", 
+               RowBox[{"(", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"num", " ", "=", " ", "3"}], ";", " ", 
+                 RowBox[{"displayS2R", " ", "=", " ", "\"\<\>\""}], ";"}], 
+                "\[IndentingNewLine]", ")"}], "\[IndentingNewLine]", ",", 
+               "\[IndentingNewLine]", 
+               RowBox[{"(", "\[IndentingNewLine]", 
+                RowBox[{
+                "displayS2R", " ", "=", " ", 
+                 "\"\<Error: No JPG Image found at url.\>\""}], 
+                "\[IndentingNewLine]", ")"}]}], "\[IndentingNewLine]", 
+              "]"}]}], "]"}], "\[IndentingNewLine]", ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Button", "[", 
+            RowBox[{"\"\<Back\>\"", ",", " ", 
+             RowBox[{"num", " ", "=", " ", "1"}]}], "]"}], 
+           "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+           RowBox[{"TextCell", "[", 
+            RowBox[{"Text", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+               RowBox[{"Dynamic", "[", 
+                RowBox[{"displayS2R", ",", 
+                 RowBox[{"Initialization", "\[RuleDelayed]", 
+                  RowBox[{"(", 
+                   RowBox[{"displayS2R", " ", "=", "\"\<\>\""}], ")"}]}]}], 
+                "]"}], ",", " ", 
+               RowBox[{"FontFamily", "\[Rule]", "\"\<Comic Sans MS\>\""}], 
+               ",", 
+               RowBox[{"FontSize", "\[Rule]", "25"}], ",", 
+               RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}], "]"}], 
+            "]"}]}], "\[IndentingNewLine]", "}"}], "]"}], 
+        "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{
+         "screen", " ", "3", " ", "or", " ", "Video", " ", "Feed", " ", 
+          RowBox[{"(", 
+           RowBox[{
+           "only", " ", "entry", " ", "point", " ", "is", " ", "through", " ",
+             "URL"}], ")"}]}], "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"Column", "[", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"TextCell", "[", 
+            RowBox[{
+             RowBox[{"Text", "[", 
+              RowBox[{"Style", "[", 
+               RowBox[{"\"\<POI Tracker\>\"", ",", 
+                RowBox[{"FontFamily", "\[Rule]", "\"\<Comic Sans MS\>\""}], 
+                ",", " ", 
+                RowBox[{"FontSize", "\[Rule]", "100"}], ",", 
+                RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}], "]"}], 
+             ",", "\"\<Output\>\"", ",", 
+             RowBox[{"ShowStringCharacters", "\[Rule]", "False"}]}], "]"}], 
+           ",", "\[IndentingNewLine]", 
+           RowBox[{"TextCell", "[", 
+            RowBox[{"Text", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{"\"\<Current Feed:\>\"", ",", " ", 
+               RowBox[{"FontFamily", "\[Rule]", "\"\<Comic Sans MS\>\""}], 
+               ",", " ", 
+               RowBox[{"FontSize", "\[Rule]", "25"}], ",", " ", 
+               RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}], "]"}], 
+            "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"TextCell", "[", 
+            RowBox[{"Dynamic", "[", 
+             RowBox[{"displayS3P", ",", 
+              RowBox[{"Initialization", "\[RuleDelayed]", 
+               RowBox[{"(", 
+                RowBox[{"displayS3P", " ", "=", "\"\<\>\""}], ")"}]}]}], 
+             "]"}], "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"TextCell", "[", 
+            RowBox[{"Text", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+               RowBox[{"Dynamic", "[", 
+                RowBox[{"displayS3N", ",", 
+                 RowBox[{"Initialization", "\[RuleDelayed]", 
+                  RowBox[{"(", 
+                   RowBox[{"displayS3N", " ", "=", "\"\<\>\""}], ")"}]}]}], 
+                "]"}], ",", 
+               RowBox[{"FontSize", "\[Rule]", "25"}], ",", 
+               RowBox[{"FontFamily", "\[Rule]", "\"\<Comic Sans MS\>\""}], 
+               ",", 
+               RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}], "]"}], 
+            "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Button", "[", 
+            RowBox[{"\"\<Start\>\"", ",", " ", "\[IndentingNewLine]", 
+             RowBox[{"(", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"Length", "@", 
+                   RowBox[{"FindFaces", "[", 
+                    RowBox[{
+                    RowBox[{"Import", "[", 
+                    RowBox[{"url", ",", "\"\<Image\>\""}], "]"}], ",", 
+                    "\"\<Image\>\""}], "]"}]}], "\[GreaterEqual]", " ", "1"}],
+                  ",", "\[IndentingNewLine]", 
+                 RowBox[{"displayS3P", " ", "=", 
+                  RowBox[{"HighlightImage", "[", 
+                   RowBox[{
+                    RowBox[{"ImageResize", "[", 
+                    RowBox[{
+                    RowBox[{"Import", "[", 
+                    RowBox[{"url", ",", "\"\<Image\>\""}], "]"}], ",", 
+                    "Small"}], "]"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"FindFaces", "[", 
+                    RowBox[{
+                    RowBox[{"ImageResize", "[", 
+                    RowBox[{
+                    RowBox[{"Import", "[", 
+                    RowBox[{"url", ",", "\"\<Image\>\""}], "]"}], ",", 
+                    "Small"}], "]"}], ",", "\"\<Image\>\""}], "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], 
+                 "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+                 RowBox[{"displayS3P", " ", "=", 
+                  RowBox[{"ImageResize", "[", 
+                   RowBox[{
+                    RowBox[{"Import", "[", 
+                    RowBox[{"url", ",", "\"\<Image\>\""}], "]"}], ",", 
+                    "Small"}], "]"}]}]}], "]"}], ";", "\[IndentingNewLine]", 
+               "\[IndentingNewLine]", 
+               RowBox[{"stS3Send", " ", "=", " ", 
+                RowBox[{"SessionSubmit", "@", 
+                 RowBox[{"ScheduledTask", "[", "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"displayS3P", " ", "=", 
+                    RowBox[{"ImageResize", "[", 
+                    RowBox[{
+                    RowBox[{"Import", "[", 
+                    RowBox[{"url", ",", "\"\<Image\>\""}], "]"}], ",", 
+                    "Small"}], "]"}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"!", 
+                    RowBox[{"SocketReadyQ", "[", "server", "]"}]}], "&&", " ", 
+                    RowBox[{
+                    RowBox[{"Length", "@", 
+                    RowBox[{"FindFaces", "[", 
+                    RowBox[{
+                    RowBox[{"Import", "[", 
+                    RowBox[{"url", ",", "\"\<Image\>\""}], "]"}], ",", 
+                    "\"\<Image\>\""}], "]"}]}], "\[GreaterEqual]", " ", 
+                    "1"}]}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"(", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"picFS3", " ", "=", " ", 
+                    RowBox[{"ToString", "@", 
+                    RowBox[{"ImageData", "@", 
+                    RowBox[{"Rasterize", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"FindFaces", "[", 
+                    RowBox[{
+                    RowBox[{"Import", "[", 
+                    RowBox[{"url", ",", "\"\<Image\>\""}], "]"}], ",", 
+                    "\"\<Image\>\""}], "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                    RowBox[{"RasterSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"96", ",", "96"}], "}"}]}]}], "]"}]}]}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"WriteString", "[", 
+                    RowBox[{"server", ",", 
+                    RowBox[{
+                    RowBox[{"ToString", "@", 
+                    RowBox[{"StringLength", "@", "picFS3"}]}], "<>", 
+                    "\"\<~\>\"", "<>", "picFS3"}]}], "]"}], ";"}], 
+                    "\[IndentingNewLine]", ")"}]}], "]"}], ";"}], 
+                   "\[IndentingNewLine]", ",", "1."}], "]"}]}]}], ";", 
+               "\[IndentingNewLine]", "\[IndentingNewLine]", 
+               RowBox[{"stS3Read", " ", "=", " ", 
+                RowBox[{"SessionSubmit", "@", 
+                 RowBox[{"ScheduledTask", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"SocketReadyQ", "[", "server", "]"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"(", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"displayS3N", " ", "=", " ", 
+                    RowBox[{"ByteArrayToString", "@", 
+                    RowBox[{"SocketReadMessage", "[", "server", "]"}]}]}], 
+                    ";"}], "\[IndentingNewLine]", ")"}]}], "]"}], ";"}], 
+                   "\[IndentingNewLine]", ",", "1."}], "]"}]}]}]}], 
+              "\[IndentingNewLine]", ")"}]}], "\[IndentingNewLine]", "]"}], 
+           ",", "\[IndentingNewLine]", 
+           RowBox[{"Button", "[", 
+            RowBox[{"\"\<Stop\>\"", ",", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"TaskRemove", "[", 
+                RowBox[{"Tasks", "[", "]"}], "]"}], ";", " ", 
+               RowBox[{"displayS3P", " ", "=", " ", 
+                RowBox[{"ImageResize", "[", 
+                 RowBox[{
+                  RowBox[{"Import", "[", 
+                   RowBox[{"url", ",", "\"\<Image\>\""}], "]"}], ",", 
+                  "Small"}], "]"}]}]}], ")"}]}], "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Button", "[", 
+            RowBox[{"\"\<Main Menu\>\"", ",", " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"num", " ", "=", " ", "1"}], ";", 
+               RowBox[{"TaskRemove", "[", 
+                RowBox[{"Tasks", "[", "]"}], "]"}]}], ")"}]}], " ", "]"}]}], 
+          "\[IndentingNewLine]", "}"}], "]"}], "\[IndentingNewLine]", ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{
+         "screen", " ", "4", " ", "or", " ", "Input", " ", "a", " ", "JPG"}], 
+         "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"Column", "[", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"TextCell", "[", 
+            RowBox[{
+             RowBox[{"Text", "[", 
+              RowBox[{"Style", "[", 
+               RowBox[{"\"\<POI Tracker\>\"", ",", 
+                RowBox[{"FontFamily", "\[Rule]", "\"\<Comic Sans MS\>\""}], 
+                ",", " ", 
+                RowBox[{"FontSize", "\[Rule]", "100"}], ",", 
+                RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}], "]"}], 
+             ",", "\"\<Output\>\"", ",", 
+             RowBox[{"ShowStringCharacters", "\[Rule]", "False"}]}], "]"}], 
+           ",", "\[IndentingNewLine]", 
+           RowBox[{"TextCell", "[", 
+            RowBox[{"Text", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{"\"\<Copy JPG image here:\>\"", ",", " ", 
+               RowBox[{"FontFamily", "\[Rule]", "\"\<Comic Sans MS\>\""}], 
+               ",", " ", 
+               RowBox[{"FontSize", "\[Rule]", "25"}], ",", " ", 
+               RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}], "]"}], 
+            "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"InputField", "[", 
+            RowBox[{"Dynamic", "[", 
+             RowBox[{"picS4", ",", 
+              RowBox[{"Initialization", "\[RuleDelayed]", 
+               RowBox[{"(", 
+                RowBox[{"picS4", "=", " ", "\"\<Copy JPG picture here\>\""}], 
+                ")"}]}]}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Button", "[", 
+            RowBox[{"\"\<Anaylze\>\"", ",", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"ImageQ", "@", "picS4"}], "&&", " ", 
+                RowBox[{
+                 RowBox[{"Length", "@", 
+                  RowBox[{"FindFaces", "[", 
+                   RowBox[{"picS4", ",", "\"\<Image\>\""}], "]"}]}], " ", 
+                 "\[GreaterEqual]", " ", "1"}]}], ",", "\[IndentingNewLine]", 
+               " ", 
+               RowBox[{"(", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"picFS4", " ", "=", " ", 
+                  RowBox[{"ToString", "@", 
+                   RowBox[{"ImageData", "@", 
+                    RowBox[{"Rasterize", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"FindFaces", "[", 
+                    RowBox[{"picS4", ",", "\"\<Image\>\""}], "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                    RowBox[{"RasterSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"96", ",", "96"}], "}"}]}]}], "]"}]}]}]}], ";", 
+                 RowBox[{"WriteString", "[", 
+                  RowBox[{"server", ",", " ", 
+                   RowBox[{
+                    RowBox[{"ToString", "@", 
+                    RowBox[{"StringLength", "@", "picFS4"}]}], "<>", 
+                    "\"\<~\>\"", "<>", "picFS4"}]}], "]"}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"displayS4", "=", 
+                  RowBox[{"imageFH", "[", "picS4", "]"}]}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"(*", 
+                  RowBox[{"Self", "-", 
+                   RowBox[{
+                   "killing", " ", "scheduled", " ", "task", " ", "to", " ", 
+                    "retrieve", " ", "message", " ", "from", " ", 
+                    "server"}]}], "*)"}], "\[IndentingNewLine]", 
+                 RowBox[{"stS4", " ", "=", " ", 
+                  RowBox[{"SessionSubmit", "@", 
+                   RowBox[{"ScheduledTask", "[", 
+                    RowBox[{
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"SocketReadyQ", "@", "server"}], ",", 
+                    RowBox[{
+                    RowBox[{"repS4", " ", "=", 
+                    RowBox[{"ByteArrayToString", "@", 
+                    RowBox[{"SocketReadMessage", "[", "server", "]"}]}]}], 
+                    ";", 
+                    RowBox[{"TaskRemove", "[", "stS4", "]"}]}]}], "]"}], ",", 
+                    ".33"}], "]"}]}]}]}], "\[IndentingNewLine]", ")"}], 
+               "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+               RowBox[{"(", "\[IndentingNewLine]", 
+                RowBox[{
+                "displayS4", " ", "=", " ", 
+                 "\"\<Error: Please enter a picture with a face.\>\""}], 
+                "\[IndentingNewLine]", ")"}]}], "\[IndentingNewLine]", 
+              "]"}]}], " ", "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"TextCell", "[", 
+            RowBox[{"Dynamic", "[", 
+             RowBox[{"displayS4", ",", 
+              RowBox[{"Initialization", "\[RuleDelayed]", 
+               RowBox[{"(", 
+                RowBox[{"displayS4", " ", "=", "\"\<\>\""}], ")"}]}]}], "]"}],
+             "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"TextCell", "[", 
+            RowBox[{"Text", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+               RowBox[{"Dynamic", "[", 
+                RowBox[{"repS4", ",", 
+                 RowBox[{"Initialization", "\[RuleDelayed]", 
+                  RowBox[{"(", 
+                   RowBox[{"repS4", " ", "=", "\"\<\>\""}], ")"}]}]}], "]"}], 
+               ",", " ", 
+               RowBox[{"FontFamily", "\[Rule]", "\"\<Comic Sans MS\>\""}], 
+               ",", 
+               RowBox[{"FontSize", "\[Rule]", "25"}], ",", 
+               RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}], "]"}], 
+            "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Row", "[", 
+            RowBox[{"{", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"Button", "[", 
+               RowBox[{"\"\<Back\>\"", ",", " ", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"num", " ", "=", " ", "1"}], ";", "  ", 
+                  RowBox[{"TaskRemove", "[", 
+                   RowBox[{"Tasks", "[", "]"}], "]"}]}], ")"}]}], "]"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"Button", "[", 
+               RowBox[{
+               "\"\<Refresh Server\>\"", ",", "\[IndentingNewLine]", " ", 
+                RowBox[{"stS4R", " ", "=", " ", 
+                 RowBox[{"SessionSubmit", "@", 
+                  RowBox[{"ScheduledTask", "[", "\[IndentingNewLine]", 
+                   RowBox[{
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"SocketReadyQ", "@", "server"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"(", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"displayS4", " ", "=", 
+                    RowBox[{"ByteArrayToString", "@", 
+                    RowBox[{"SocketReadMessage", "[", "server", "]"}]}]}], 
+                    ";", "\[IndentingNewLine]", 
+                    RowBox[{"TaskRemove", "[", "stS4R", "]"}], ";"}], " ", 
+                    "\[IndentingNewLine]", ")"}], "\[IndentingNewLine]", ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"WriteString", "[", 
+                    RowBox[{
+                    "server", ",", " ", "\"\<15~Done Refreshing\>\""}], 
+                    "]"}]}], "\[IndentingNewLine]", "]"}], 
+                    "\[IndentingNewLine]", ",", ".33"}], "]"}]}]}]}], "]"}]}],
+              "\[IndentingNewLine]", "}"}], "]"}]}], "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", "}"}], "]"}], "\[IndentingNewLine]", ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{"screen", " ", "5", " ", "or", " ", "laptop", " ", "cam"}], 
+         "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"Column", "[", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"TextCell", "[", 
+            RowBox[{
+             RowBox[{"Text", "[", 
+              RowBox[{"Style", "[", 
+               RowBox[{"\"\<POI Tracker\>\"", ",", 
+                RowBox[{"FontFamily", "\[Rule]", "\"\<Comic Sans MS\>\""}], 
+                ",", " ", 
+                RowBox[{"FontSize", "\[Rule]", "100"}], ",", 
+                RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}], "]"}], 
+             ",", "\"\<Output\>\"", ",", 
+             RowBox[{"ShowStringCharacters", "\[Rule]", "False"}]}], "]"}], 
+           ",", "\[IndentingNewLine]", 
+           RowBox[{"TextCell", "[", 
+            RowBox[{"Text", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+              "\"\<Lean close to your camera with a plain face then press the \
+button. It will take your picture and anaylze it.\>\"", ",", " ", 
+               RowBox[{"FontFamily", "\[Rule]", "\"\<Comic Sans MS\>\""}], 
+               ",", " ", 
+               RowBox[{"FontSize", "\[Rule]", "25"}], ",", " ", 
+               RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}], "]"}], 
+            "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Button", "[", 
+            RowBox[{"\"\<Capture\>\"", ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"picS5", "=", 
+               RowBox[{"CurrentImage", "[", "]"}]}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"If", "[", " ", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"Length", "@", 
+                  RowBox[{"FindFaces", "[", 
+                   RowBox[{"picS5", ",", "\"\<Image\>\""}], "]"}]}], 
+                 "\[GreaterEqual]", " ", "1"}], ",", "\[IndentingNewLine]", 
+                " ", 
+                RowBox[{"(", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"picFS5", " ", "=", " ", 
+                   RowBox[{"ToString", "@", 
+                    RowBox[{"ImageData", "@", 
+                    RowBox[{"Rasterize", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"FindFaces", "[", 
+                    RowBox[{"picS5", ",", "\"\<Image\>\""}], "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                    RowBox[{"RasterSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"96", ",", "96"}], "}"}]}]}], "]"}]}]}]}], ";", 
+                  RowBox[{"WriteString", "[", 
+                   RowBox[{"server", ",", " ", 
+                    RowBox[{
+                    RowBox[{"ToString", "@", 
+                    RowBox[{"StringLength", "@", "picFS5"}]}], "<>", 
+                    "\"\<~\>\"", "<>", "picFS5"}]}], "]"}], ";", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{"displayS5", "=", 
+                   RowBox[{"imageFH", "[", "picS5", "]"}]}], ";", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{"(*", 
+                   RowBox[{"Self", "-", 
+                    RowBox[{
+                    "killing", " ", "scheduled", " ", "task", " ", "to", " ", 
+                    "retrieve", " ", "message", " ", "from", " ", 
+                    "server"}]}], "*)"}], "\[IndentingNewLine]", 
+                  RowBox[{"stS5", " ", "=", " ", 
+                   RowBox[{"SessionSubmit", "@", 
+                    RowBox[{"ScheduledTask", "[", 
+                    RowBox[{
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"SocketReadyQ", "@", "server"}], ",", 
+                    RowBox[{
+                    RowBox[{"repS5", " ", "=", 
+                    RowBox[{"ByteArrayToString", "@", 
+                    RowBox[{"SocketReadMessage", "[", "server", "]"}]}]}], 
+                    ";", 
+                    RowBox[{"TaskRemove", "[", "stS5", "]"}]}]}], "]"}], ",", 
+                    ".33"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+                  RowBox[{"displayS5E", " ", "=", "\"\<\>\""}], ";"}], 
+                 "\[IndentingNewLine]", ")"}], "\[IndentingNewLine]", ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{"(", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"displayS5", " ", "=", " ", "picS5"}], ";", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{
+                  "displayS5E", " ", "=", " ", 
+                   "\"\<Error: No face found. Check the lighting and \
+reposition yourself in the frame.\>\""}], ";"}], "\[IndentingNewLine]", 
+                 ")"}]}], "\[IndentingNewLine]", "]"}]}]}], " ", "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"TextCell", "[", 
+            RowBox[{"Dynamic", "[", 
+             RowBox[{"displayS5", ",", 
+              RowBox[{"Initialization", "\[RuleDelayed]", 
+               RowBox[{"(", 
+                RowBox[{"displayS5", " ", "=", "\"\<\>\""}], ")"}]}]}], "]"}],
+             "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"TextCell", "[", 
+            RowBox[{"Text", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+               RowBox[{"Dynamic", "[", 
+                RowBox[{"repS5", ",", 
+                 RowBox[{"Initialization", "\[RuleDelayed]", 
+                  RowBox[{"(", 
+                   RowBox[{"repS5", " ", "=", "\"\<\>\""}], ")"}]}]}], "]"}], 
+               ",", " ", 
+               RowBox[{"FontFamily", "\[Rule]", "\"\<Comic Sans MS\>\""}], 
+               ",", 
+               RowBox[{"FontSize", "\[Rule]", "25"}], ",", 
+               RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}], "]"}], 
+            "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Button", "[", 
+            RowBox[{"\"\<Back\>\"", ",", " ", 
+             RowBox[{"num", " ", "=", " ", "1"}], ",", 
+             RowBox[{"TaskRemove", "[", 
+              RowBox[{"Tasks", "[", "]"}], "]"}]}], "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Button", "[", 
+            RowBox[{"\"\<Refresh Server\>\"", ",", "\[IndentingNewLine]", " ", 
+             RowBox[{"stS5R", " ", "=", " ", 
+              RowBox[{"SessionSubmit", "@", 
+               RowBox[{"ScheduledTask", "[", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"If", "[", 
+                  RowBox[{
+                   RowBox[{"SocketReadyQ", "@", "server"}], ",", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"(", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"displayS5", " ", "=", 
+                    RowBox[{"ByteArrayToString", "@", 
+                    RowBox[{"SocketReadMessage", "[", "server", "]"}]}]}], 
+                    ";", "\[IndentingNewLine]", 
+                    RowBox[{"TaskRemove", "[", "stS5R", "]"}], ";"}], " ", 
+                    "\[IndentingNewLine]", ")"}], "\[IndentingNewLine]", ",", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"WriteString", "[", 
+                    RowBox[{
+                    "server", ",", " ", "\"\<15~Done Refreshing\>\""}], 
+                    "]"}]}], "\[IndentingNewLine]", "]"}], 
+                 "\[IndentingNewLine]", ",", ".33"}], "]"}]}]}]}], "]"}], ",",
+            "\[IndentingNewLine]", 
+           RowBox[{"TextCell", "[", 
+            RowBox[{"Text", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+               RowBox[{"Dynamic", "[", 
+                RowBox[{"displayS5E", ",", 
+                 RowBox[{"Initialization", "\[RuleDelayed]", 
+                  RowBox[{"(", 
+                   RowBox[{"displayS5E", " ", "=", "\"\<\>\""}], ")"}]}]}], 
+                "]"}], ",", " ", 
+               RowBox[{"FontFamily", "\[Rule]", "\"\<Comic Sans MS\>\""}], 
+               ",", 
+               RowBox[{"FontSize", "\[Rule]", "25"}], ",", 
+               RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}], "]"}], 
+            "]"}]}], "\[IndentingNewLine]", "}"}], "]"}]}], 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", "}"}]}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"CreateDialog", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Overlay", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Graphics", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"Blue", ",", 
+                RowBox[{"Rectangle", "[", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0"}], "}"}], ",", 
+                  RowBox[{"Dynamic", "@", 
+                   RowBox[{
+                   "AbsoluteCurrentValue", "[", "WindowSize", "]"}]}]}], 
+                 "]"}]}], " ", "}"}], ",", 
+              RowBox[{"AspectRatio", " ", "\[Rule]", " ", 
+               RowBox[{
+                RowBox[{"Dynamic", "@", 
+                 RowBox[{
+                  RowBox[{"AbsoluteCurrentValue", "[", "WindowSize", "]"}], 
+                  "[", 
+                  RowBox[{"[", "2", "]"}], "]"}]}], "/", 
+                RowBox[{"Dynamic", "@", 
+                 RowBox[{
+                  RowBox[{"AbsoluteCurrentValue", "[", "WindowSize", "]"}], 
+                  "[", 
+                  RowBox[{"[", "1", "]"}], "]"}]}]}]}], ",", 
+              RowBox[{"ImageSize", "\[Rule]", "Full"}], ",", 
+              RowBox[{"ImageMargins", "\[Rule]", "0"}], ",", 
+              RowBox[{"PlotRangePadding", "\[Rule]", "0"}]}], "]"}], 
+            "\[IndentingNewLine]", "\[IndentingNewLine]", ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Dynamic", "[", 
+             RowBox[{
+              RowBox[{"screens", "[", 
+               RowBox[{"[", "num", "]"}], "]"}], ",", 
+              RowBox[{"Initialization", "\[RuleDelayed]", 
+               RowBox[{"(", 
+                RowBox[{"num", " ", "=", "1"}], ")"}]}]}], "]"}]}], 
+           "\[IndentingNewLine]", "}"}], ",", "All", ",", "2", ",", 
+          RowBox[{"Alignment", "\[Rule]", 
+           RowBox[{"{", "Center", "}"}]}]}], "]"}], "}"}], 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", ",", 
+       RowBox[{"ImageSize", "\[Rule]", 
+        RowBox[{"Dynamic", "@", 
+         RowBox[{"AbsoluteCurrentValue", "[", 
+          RowBox[{
+           RowBox[{"EvaluationNotebook", "[", "]"}], ",", "WindowSize"}], 
+          "]"}]}]}], ",", 
+       RowBox[{"ImageMargins", "\[Rule]", "0"}], ",", 
+       RowBox[{"CellMargins", "\[Rule]", "0"}], ",", 
+       RowBox[{"Saveable", "\[Rule]", "False"}], ",", 
+       RowBox[{"ShowCellBracket", "\[Rule]", "False"}], ",", 
+       RowBox[{"ShowCellLabel", "\[Rule]", "False"}], ",", 
+       RowBox[{"\"\<TrackCellChangeTimes\>\"", "\[Rule]", "False"}], ",", 
+       RowBox[{"StyleDefinitions", "\[Rule]", "\"\<Default.nb\>\""}], ",", 
+       RowBox[{"WindowFrameElements", "\[Rule]", 
+        RowBox[{"{", "}"}]}], ",", 
+       RowBox[{"WindowElements", "\[Rule]", 
+        RowBox[{"{", "}"}]}], ",", 
+       RowBox[{"WindowFrame", "\[Rule]", "\"\<Frameless\>\""}], ",", 
+       RowBox[{"WindowSize", "\[Rule]", "Full"}], ",", 
+       RowBox[{"WindowMargins", "\[Rule]", "Automatic"}], ",", 
+       RowBox[{"WindowTitle", "\[Rule]", "\"\<POI Finder\>\""}], ",", 
+       RowBox[{"Editable", "\[Rule]", "False"}], ",", 
+       RowBox[{"Background", "\[Rule]", "Blue"}]}], "]"}]}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "]"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.7634080966290894`*^9, 3.7634081246283064`*^9}, {
+   3.763408241302701*^9, 3.763408326326106*^9}, {3.7634084000917892`*^9, 
+   3.7634084463240213`*^9}, {3.763408482409034*^9, 3.7634085377301807`*^9}, {
+   3.7634085899518256`*^9, 3.7634086402492943`*^9}, {3.763408776912073*^9, 
+   3.763408780871579*^9}, {3.7634088746984367`*^9, 3.763408917446166*^9}, {
+   3.7634090633019867`*^9, 3.7634091190399103`*^9}, {3.7634092215212307`*^9, 
+   3.763409222741227*^9}, {3.763409253970554*^9, 3.763409376302642*^9}, {
+   3.763409412680192*^9, 3.7634094624606967`*^9}, {3.7634097685890417`*^9, 
+   3.76340983817968*^9}, {3.763409870380807*^9, 3.76340990767725*^9}, {
+   3.7634099545172443`*^9, 3.7634099582263975`*^9}, {3.763410112891694*^9, 
+   3.763410118596803*^9}, {3.7634103565431395`*^9, 3.7634103708471375`*^9}, {
+   3.7634104776001034`*^9, 3.7634105058130784`*^9}, {3.7634106321020465`*^9, 
+   3.763410646053545*^9}, {3.763410736510705*^9, 3.7634107400552335`*^9}, {
+   3.763412480348781*^9, 3.763412575822796*^9}, 3.7634130839855833`*^9, {
+   3.7634131153458405`*^9, 3.763413230040816*^9}, {3.7634133593394966`*^9, 
+   3.7634133608046403`*^9}, {3.763413390977769*^9, 3.763413420395036*^9}, {
+   3.7634135015872307`*^9, 3.7634135810247383`*^9}, {3.7634136223733587`*^9, 
+   3.7634136268823724`*^9}, {3.763413682315523*^9, 3.7634138811466403`*^9}, {
+   3.7634140226949263`*^9, 3.763414036678909*^9}, {3.763414071569213*^9, 
+   3.763414187935638*^9}, {3.7634142207145295`*^9, 3.763414412503256*^9}, {
+   3.7634145933880243`*^9, 3.763414597618039*^9}, {3.7634147859968615`*^9, 
+   3.7634148174931107`*^9}, {3.763414996841097*^9, 3.7634150185943437`*^9}, {
+   3.7634151099776587`*^9, 3.7634151503243065`*^9}, {3.7634152379086843`*^9, 
+   3.7634153494474044`*^9}, {3.763415434485176*^9, 3.7634154716563826`*^9}, {
+   3.7634155042142496`*^9, 3.7634155079215345`*^9}, {3.763415541031911*^9, 
+   3.7634156140882845`*^9}, {3.7634156961905055`*^9, 3.763415700221496*^9}, {
+   3.763415763779722*^9, 3.7634157684394884`*^9}, {3.7634601442128158`*^9, 
+   3.7634601513290772`*^9}, {3.7634602097588515`*^9, 3.763460234324515*^9}, 
+   3.7634603384653425`*^9, {3.7634603879709806`*^9, 3.763460388438964*^9}, {
+   3.7650501208990817`*^9, 3.7650501523300905`*^9}, {3.7650534262961216`*^9, 
+   3.765053427692119*^9}, {3.7650536782360916`*^9, 3.7650537174850917`*^9}, {
+   3.7650537604831023`*^9, 3.765053775406089*^9}, {3.7650539582691565`*^9, 
+   3.76505396141415*^9}, {3.7650540244548306`*^9, 3.765054052100001*^9}, {
+   3.7650541966255007`*^9, 3.765054297470763*^9}, {3.765054345157226*^9, 
+   3.7650543598922195`*^9}, {3.7650544570052347`*^9, 
+   3.7650544593812313`*^9}, {3.765054555488243*^9, 3.7650545649982367`*^9}, {
+   3.765054750581541*^9, 3.765054755595518*^9}, {3.765054820276528*^9, 
+   3.7650548552595267`*^9}, {3.7650548984173517`*^9, 3.765054900144351*^9}, {
+   3.7650550306263685`*^9, 3.7650550326583905`*^9}, {3.765055094207906*^9, 
+   3.7650550943749013`*^9}, {3.7650552417987146`*^9, 
+   3.7650553498189583`*^9}, {3.765055386834676*^9, 3.765055399811674*^9}, {
+   3.7650554639507923`*^9, 3.7650554649287815`*^9}, {3.765055782332592*^9, 
+   3.7650557988005943`*^9}, {3.7650558413985977`*^9, 
+   3.7650558954546113`*^9}, {3.7650585249277363`*^9, 
+   3.7650585258417196`*^9}, {3.765058608582469*^9, 3.7650586965674143`*^9}, {
+   3.765059025745695*^9, 3.7650590350778017`*^9}, {3.765059069774512*^9, 
+   3.7650590860612755`*^9}, {3.765059935056823*^9, 3.7650599388298187`*^9}, {
+   3.765059970725827*^9, 3.765059976596255*^9}, {3.7650604507839084`*^9, 
+   3.7650604558128047`*^9}, {3.765060592574484*^9, 3.765060620962405*^9}, {
+   3.7650608211205254`*^9, 3.7650608498504944`*^9}, 3.7650608811827893`*^9, {
+   3.7650609237127895`*^9, 3.76506093555678*^9}, 3.7650610212142057`*^9, {
+   3.765061128883853*^9, 3.7650612065425777`*^9}, {3.765061373923319*^9, 
+   3.765061378357315*^9}, {3.7650615683750353`*^9, 3.7650615860984287`*^9}, {
+   3.765061631553454*^9, 3.76506164180068*^9}, {3.765061712898218*^9, 
+   3.765061809627161*^9}, {3.765061866886238*^9, 3.765061906966234*^9}, {
+   3.765062010614009*^9, 3.765062048635765*^9}, {3.7650621401906805`*^9, 
+   3.7650622700700264`*^9}, {3.765062353817356*^9, 3.765062498142022*^9}, {
+   3.7650625328695803`*^9, 3.765062643748153*^9}, {3.765062674083789*^9, 
+   3.765062755520447*^9}, {3.765062936115489*^9, 3.765062995395028*^9}, 
+   3.765063077735555*^9, {3.7651148512943583`*^9, 3.76511490777535*^9}, {
+   3.765136985248836*^9, 3.7651369874248395`*^9}, {3.7651370174688396`*^9, 
+   3.765137046476836*^9}, {3.76513708533974*^9, 3.765137130311368*^9}, {
+   3.7651371632150154`*^9, 3.765137163437929*^9}, {3.7651372131676874`*^9, 
+   3.765137222962099*^9}, {3.765137267930636*^9, 3.765137416589799*^9}, {
+   3.7651383629197817`*^9, 3.765138542325362*^9}, {3.765138580492593*^9, 
+   3.765138662204608*^9}, {3.7651387899076877`*^9, 3.7651388735214596`*^9}, {
+   3.765138984102883*^9, 3.765139025733472*^9}, {3.7651390633814306`*^9, 
+   3.7651390672706175`*^9}, {3.7651391418623095`*^9, 3.765139291562574*^9}, {
+   3.7651395229772396`*^9, 3.7651396001719847`*^9}, {3.765139632110186*^9, 
+   3.765139652162101*^9}, {3.76513972793211*^9, 3.765139729524311*^9}, {
+   3.765139763198739*^9, 3.765139765877428*^9}, {3.7651398095203333`*^9, 
+   3.76513982184933*^9}, {3.7651398603755913`*^9, 3.7651398652966766`*^9}, {
+   3.7651399113599195`*^9, 3.7651399487063327`*^9}, {3.7651400441499476`*^9, 
+   3.7651400527431006`*^9}, 3.7651522878117437`*^9, {3.7651523334900217`*^9, 
+   3.7651524150337343`*^9}, 3.765152507582385*^9, {3.765152620194186*^9, 
+   3.7651526815117927`*^9}, {3.7651527278045025`*^9, 3.765152754095335*^9}, 
+   3.765152788048108*^9, {3.76515303125042*^9, 3.7651531444331455`*^9}, {
+   3.765153193139975*^9, 3.7651532293979445`*^9}, {3.7651534255909815`*^9, 
+   3.765153435335085*^9}, {3.7651538338920407`*^9, 3.7651538626373224`*^9}, {
+   3.7652044965437584`*^9, 3.765204523309803*^9}, {3.7652046475502825`*^9, 
+   3.765204664762292*^9}, {3.765205102611703*^9, 3.765205236055523*^9}, {
+   3.76520532937536*^9, 3.76520542175226*^9}, {3.765205664460718*^9, 
+   3.765205665865734*^9}, 3.765205767594993*^9, {3.7652059481510825`*^9, 
+   3.765206141895667*^9}, {3.7652061993835506`*^9, 3.7652062183245153`*^9}, {
+   3.7652062540982456`*^9, 3.765206334841787*^9}, {3.7652098405386157`*^9, 
+   3.7652100677085934`*^9}, 3.76521016962689*^9, {3.7652740988689966`*^9, 
+   3.7652741086549892`*^9}, {3.7652742188818226`*^9, 
+   3.7652742204828205`*^9}, {3.765274437183522*^9, 3.765274475102763*^9}, {
+   3.765274838465914*^9, 3.765274845049478*^9}, 3.7652749202686768`*^9, {
+   3.765275428135373*^9, 3.7652754304754395`*^9}, {3.765532261882167*^9, 
+   3.7655322629485073`*^9}, {3.7655326979634213`*^9, 3.765532700262534*^9}, {
+   3.765619725928985*^9, 3.76561972842098*^9}, 3.7656295960872216`*^9, 
+   3.7656555045501595`*^9, {3.7658198008409195`*^9, 3.7658198084328914`*^9}, {
+   3.7658331418509455`*^9, 3.7658331849799533`*^9}, {3.7658341653227344`*^9, 
+   3.765834181842722*^9}, {3.7658342569987326`*^9, 3.765834331629595*^9}, {
+   3.7658345650002155`*^9, 3.7658346936423707`*^9}, 3.765834939908452*^9, {
+   3.7658349886884675`*^9, 3.765835139104499*^9}, {3.7658351946445284`*^9, 
+   3.765835217124522*^9}, {3.765835799462468*^9, 3.7658358090925536`*^9}, {
+   3.76583615106766*^9, 3.765836217071677*^9}, {3.765836448429803*^9, 
+   3.765836525066618*^9}, {3.7658381828305984`*^9, 3.7658382117356124`*^9}, {
+   3.7658382708586144`*^9, 3.7658382734716177`*^9}, {3.7658398366263967`*^9, 
+   3.7658398967686434`*^9}, 3.7658399282465944`*^9, {3.7658399806183443`*^9, 
+   3.76584010423706*^9}, {3.7658407956033792`*^9, 3.7658408015028877`*^9}, {
+   3.7658408601322203`*^9, 3.7658408605501003`*^9}, {3.765840945081252*^9, 
+   3.765841039601812*^9}, {3.76584110965234*^9, 3.765841332248838*^9}, {
+   3.765841409757168*^9, 3.765841448990799*^9}, {3.765841560207432*^9, 
+   3.76584170970859*^9}, {3.765841837041215*^9, 3.765841857127565*^9}, {
+   3.765841916298171*^9, 3.765841972184741*^9}, {3.765842002651224*^9, 
+   3.765842003220872*^9}, {3.765842173643826*^9, 3.7658422620555277`*^9}, {
+   3.765842338405403*^9, 3.765842355790163*^9}, {3.7658437511267223`*^9, 
+   3.7658437930087147`*^9}, {3.765843948810975*^9, 3.765843981591817*^9}, {
+   3.765844045617098*^9, 3.7658441062166348`*^9}, {3.76584413736996*^9, 
+   3.7658442577848253`*^9}, {3.7658443433427887`*^9, 
+   3.7658444699970703`*^9}, {3.7658448851968718`*^9, 3.765844885321559*^9}, {
+   3.7658449679667315`*^9, 3.765845145136007*^9}, {3.765845579520299*^9, 
+   3.765845593026316*^9}, {3.765845634618313*^9, 3.7658458704703712`*^9}, {
+   3.7658459081097565`*^9, 3.7658460889023438`*^9}, {3.7658462065882826`*^9, 
+   3.76584620869228*^9}, {3.765846242462282*^9, 3.7658462533783045`*^9}, {
+   3.7658463798325872`*^9, 3.765846398147594*^9}, {3.7658464307016006`*^9, 
+   3.765846495507612*^9}, {3.7658465937248893`*^9, 3.7658465944838977`*^9}, {
+   3.765846630849905*^9, 3.765846632374899*^9}, {3.7658466681441417`*^9, 
+   3.765846673812905*^9}, {3.765846716521652*^9, 3.76584677131289*^9}, {
+   3.765846847073564*^9, 3.765846905552414*^9}, {3.7658469461888027`*^9, 
+   3.7658469556853867`*^9}, {3.7658470541376553`*^9, 
+   3.7658470605878983`*^9}, {3.7658471105396833`*^9, 
+   3.7658471110483646`*^9}, {3.7658471763427095`*^9, 3.765847186073724*^9}, {
+   3.7658475618511868`*^9, 3.7658475721261826`*^9}, {3.7658476632955976`*^9, 
+   3.7658477206046333`*^9}, {3.76584775588706*^9, 3.7658478380002584`*^9}, {
+   3.7658479999375825`*^9, 3.7658480289534817`*^9}, {3.765848369386073*^9, 
+   3.7658483801381207`*^9}, {3.765848445686438*^9, 3.765848474214374*^9}, {
+   3.765848658427379*^9, 3.7658487570723095`*^9}, {3.765848871059661*^9, 
+   3.765849047496982*^9}, {3.765849214719555*^9, 3.7658492837240353`*^9}, {
+   3.765849448366519*^9, 3.765849499215094*^9}, {3.765849750852688*^9, 
+   3.7658498527418594`*^9}, {3.765849893686329*^9, 3.7658499316947575`*^9}, {
+   3.7658499781629004`*^9, 3.765850000599534*^9}, {3.7658500740739784`*^9, 
+   3.765850179378267*^9}, {3.7658502568053074`*^9, 3.765850270462367*^9}, {
+   3.765850302364056*^9, 3.7658503205468836`*^9}, {3.765850412133219*^9, 
+   3.765850417089779*^9}, {3.765850485502501*^9, 3.765850485813506*^9}, {
+   3.7658505178565736`*^9, 3.7658505362755117`*^9}, {3.7658507111519156`*^9, 
+   3.7658507124435368`*^9}, {3.765850976269353*^9, 3.7658511731620626`*^9}, {
+   3.765851220698351*^9, 3.765851278457013*^9}, 3.76585140895936*^9, {
+   3.765851493379202*^9, 3.76585149785322*^9}, {3.7658515712144294`*^9, 
+   3.7658517693142614`*^9}, {3.7658518516115637`*^9, 
+   3.7658518832267733`*^9}, {3.765852334051149*^9, 3.7658525212617273`*^9}, {
+   3.7658525890859733`*^9, 3.765852617535699*^9}, {3.765853185016767*^9, 
+   3.765853204160596*^9}, {3.7658543129299965`*^9, 3.7658543207739534`*^9}, {
+   3.7658544603811855`*^9, 3.7658544652211742`*^9}, {3.765854599367907*^9, 
+   3.765854698555722*^9}, {3.765854758396167*^9, 3.7658547643351545`*^9}, {
+   3.765854816303141*^9, 3.765854868005123*^9}, {3.765854965746106*^9, 
+   3.76585536218446*^9}, {3.765855411759488*^9, 3.7658554568485184`*^9}, {
+   3.765855502369153*^9, 3.7658555292981744`*^9}, {3.7658558726779776`*^9, 
+   3.765855883686985*^9}, {3.7658559448674994`*^9, 3.76585609100476*^9}, {
+   3.7658562333240585`*^9, 3.765856235723075*^9}, {3.765856305820558*^9, 
+   3.7658563080635753`*^9}, {3.7658563893681355`*^9, 3.765856390627143*^9}, {
+   3.765856701722953*^9, 3.76585670550097*^9}, {3.7658569351989784`*^9, 
+   3.7658570111412544`*^9}, {3.765857051323413*^9, 3.765857056775423*^9}, {
+   3.7658571672767887`*^9, 3.7658572716363473`*^9}, {3.7658573786566496`*^9, 
+   3.765857441732809*^9}, {3.7658574823161383`*^9, 3.7658574896671553`*^9}, {
+   3.7658576123784227`*^9, 3.765857622049445*^9}, {3.765857739603695*^9, 
+   3.765857740898692*^9}, {3.7658578568628907`*^9, 3.7658579073529773`*^9}, {
+   3.765858298629684*^9, 3.76585833348105*^9}, {3.7658584166259737`*^9, 
+   3.7658584463812904`*^9}, {3.7658585098179646`*^9, 3.765858522538098*^9}, {
+   3.765858602766549*^9, 3.7658586203816814`*^9}, {3.76585875347569*^9, 
+   3.7658587560997076`*^9}, {3.765858811757132*^9, 3.765858908749777*^9}, {
+   3.76585894171537*^9, 3.7658589919656525`*^9}, {3.76585902442782*^9, 
+   3.7658590898541374`*^9}, {3.7658592493019733`*^9, 3.765859372962494*^9}, {
+   3.765859531424212*^9, 3.7658595385292397`*^9}, {3.765860488533531*^9, 
+   3.765860491630584*^9}, {3.7661009571936426`*^9, 3.766100957585644*^9}, 
+   3.7661018771760206`*^9, {3.7661021747867823`*^9, 3.7661021781965413`*^9}, {
+   3.766320321556834*^9, 3.7663203452245708`*^9}, {3.7663204344848127`*^9, 
+   3.7663204348112392`*^9}, {3.766320698849538*^9, 3.766320700265824*^9}, {
+   3.7663207587312512`*^9, 3.7663207916069365`*^9}, {3.7663209000103965`*^9, 
+   3.7663209525799656`*^9}, {3.766321680728431*^9, 3.7663218142852182`*^9}, {
+   3.766323391081211*^9, 3.766323402001048*^9}, {3.766341251323739*^9, 
+   3.7663412538146067`*^9}, {3.766345103378254*^9, 3.766345177490814*^9}, {
+   3.766345214000978*^9, 3.766345264061521*^9}, {3.766345295857398*^9, 
+   3.766345351064056*^9}, {3.766345401743868*^9, 3.766345417706211*^9}, {
+   3.766345463627967*^9, 3.76634552372565*^9}, {3.766345608773734*^9, 
+   3.7663456122336693`*^9}, {3.766367084156452*^9, 3.7663670896210327`*^9}, {
+   3.7663671351379023`*^9, 3.7663671597925305`*^9}, {3.7663674698938065`*^9, 
+   3.766367478208683*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"864fa044-afd6-433a-8349-854044983f77"]
+},
+WindowSize->{1280, 677},
+WindowMargins->{{100, Automatic}, {Automatic, 74}},
+FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
+2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 199, 3, 30, "Input",ExpressionUUID->"cc934c74-552f-4550-b19a-faa7096594da"],
+Cell[782, 27, 1894, 36, 43, "Output",ExpressionUUID->"dc1cf264-42dd-4186-96b6-48f878343078"]
+}, Open  ]],
+Cell[2691, 66, 52972, 1000, 4247, "Input",ExpressionUUID->"864fa044-afd6-433a-8349-854044983f77",
+ InitializationCell->True]
+}
+]
+*)
+
