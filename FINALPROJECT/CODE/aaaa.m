@@ -4,7 +4,7 @@ Needs["DatabaseLink`"];
 SetDirectory["/home/Sierra/Data"];
 cinna =NetModel["OpenFace Face Recognition Net Trained on CASIA-WebFace and FaceScrub Data"];
 listy=FileNames["*",{Directory[]},{2}];
-conn=OpenSQLConnection[JDBC["PostgreSQL",":5432/Sierra"],"Name"->"Sierra","Username"->"Sierra","Password"->"DrellaVU42"];
+conn=OpenSQLConnection[JDBC["PostgreSQL",":5432/Sierra"],"Name"->"Sierra","Username"->"Sierra","Password"->"***************************"];
 prevName="lol";
 id=0;
 For[i=2,i<=Length[listy]-1,i++,
